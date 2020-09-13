@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ariane", "Ariane\Ariane.csproj", "{0EDAE2BF-E2C7-4CDF-995C-4E5C8D3A1826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ariane.Common", "Ariane.Common\Ariane.Common.csproj", "{D59C2970-826D-4086-BAC9-D9830DD4400D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ariane.Model", "Ariane.Model\Ariane.Model.csproj", "{A6FC075D-6B3E-4C17-84EC-C1F219AF94AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ariane.ViewModel", "Ariane.ViewModel\Ariane.ViewModel.csproj", "{27251DFC-65FD-47EB-B93B-EC3E4F3D9F80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.RabbitMQ.Appender", "NLog.RabbitMQ.Appender\NLog.RabbitMQ.Appender.csproj", "{FB6BACB0-B29E-497A-B830-EA7A37A1F34F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ariane.TestProcess", "Ariane.TestProcess\Ariane.TestProcess.csproj", "{785D638C-C9ED-4932-B00A-2DA209BF2BEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EDAE2BF-E2C7-4CDF-995C-4E5C8D3A1826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDAE2BF-E2C7-4CDF-995C-4E5C8D3A1826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EDAE2BF-E2C7-4CDF-995C-4E5C8D3A1826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EDAE2BF-E2C7-4CDF-995C-4E5C8D3A1826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D59C2970-826D-4086-BAC9-D9830DD4400D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D59C2970-826D-4086-BAC9-D9830DD4400D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D59C2970-826D-4086-BAC9-D9830DD4400D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D59C2970-826D-4086-BAC9-D9830DD4400D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FC075D-6B3E-4C17-84EC-C1F219AF94AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FC075D-6B3E-4C17-84EC-C1F219AF94AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FC075D-6B3E-4C17-84EC-C1F219AF94AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FC075D-6B3E-4C17-84EC-C1F219AF94AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27251DFC-65FD-47EB-B93B-EC3E4F3D9F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27251DFC-65FD-47EB-B93B-EC3E4F3D9F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27251DFC-65FD-47EB-B93B-EC3E4F3D9F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27251DFC-65FD-47EB-B93B-EC3E4F3D9F80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6BACB0-B29E-497A-B830-EA7A37A1F34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6BACB0-B29E-497A-B830-EA7A37A1F34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6BACB0-B29E-497A-B830-EA7A37A1F34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6BACB0-B29E-497A-B830-EA7A37A1F34F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785D638C-C9ED-4932-B00A-2DA209BF2BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785D638C-C9ED-4932-B00A-2DA209BF2BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785D638C-C9ED-4932-B00A-2DA209BF2BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785D638C-C9ED-4932-B00A-2DA209BF2BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEE23DB8-B51A-4D97-A9AC-8097B7A304E4}
+	EndGlobalSection
+EndGlobal
