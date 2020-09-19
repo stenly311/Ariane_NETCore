@@ -1,8 +1,8 @@
 # Ariane
 
-Simple to use, reliable to run and fast to start utility to manage process orchestration and execution measuring - NOW IN .NET CORE! 
-Standalone application written in **WPF** for easier maintenance of multiple console applications windows, running simultaneously in the background.
-Filter output messages based on Error or Success flags.
+Simple and reliable utility to for process orchestration management and time execution measuring - NOW IN .NET CORE! 
+Standalone application written in **WPF** can host multiple processes and display selected console output in centralized window console.
+Allows log data filtering based on Error or Success substrings inside the log message.
 
 ![Screenshots](doc/StartingProcesses.GIF)
 
