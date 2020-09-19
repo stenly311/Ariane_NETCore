@@ -8,12 +8,12 @@ namespace Ariane.Converters
     {
         public object Convert(object value, System.Type targetType, object parameter, CultureInfo culture)
         {
-            bool val;
-            if(value != null && bool.TryParse(value.ToString(), out val))
+            if(value != null && bool.TryParse(value.ToString(), out var val))
             {
-                return val ? @"..\Resources\Images\red.png" : @"..\Resources\Images\green.png";
+                return val ? @"pack://application:,,,/Resources/Images/red.png" : @"pack://application:,,,/Resources/Images/green.png";
             }
-            return @"..\Resources\Images\gray.png";
+
+            return @"pack://application:,,,/Resources/Images/gray.png";            
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, CultureInfo culture)

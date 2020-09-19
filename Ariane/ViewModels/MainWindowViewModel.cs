@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 using Ariane.Helpers;
-using Ariane.Model;
 using Ariane.Type.Configuration;
-using Ariane.ViewModel.Win;
-using Ariane.Views;
 using Catel.Collections;
+using Catel.Logging;
 using Catel.MVVM;
 using Newtonsoft.Json;
 
 namespace Ariane.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
-    {        
+    {
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
         public MainWindowViewModel(IList<ProcessConfiguration> conf)
         {
             RegisterProcesses(conf);
@@ -29,13 +27,16 @@ namespace Ariane.ViewModels
         {
             PropertyChanged += (sender, args) =>
             {
-                if (args.PropertyName == nameof(SelectedProcess))
+                switch (args.PropertyName)
                 {
-                    Processes.Where(x=>x != SelectedProcess).ForEach(x=>x.IsCountingNotVisitedOutputLinesOn = true);
-                    
-                    SelectedProcess.IsCountingNotVisitedOutputLinesOn = false;
-                    SelectedProcess.ResetCounter();
-                }
+                    case nameof(SelectedProcess):
+
+                        Processes.Where(x => x != SelectedProcess).ForEach(x => x.IsCountingNotVisitedOutputLinesOn = true);
+
+                        SelectedProcess.IsCountingNotVisitedOutputLinesOn = false;
+                        SelectedProcess.ResetCounter();
+                        break;
+                }                
             };
         }
 
@@ -76,12 +77,8 @@ namespace Ariane.ViewModels
         {
             SelectedProcess = Processes.FirstOrDefault();
             SelectedProcess.IsCountingNotVisitedOutputLinesOn = false;
-
             StartProcessesCommand = new Command(StartProcesses, () => Processes.Any(x => !x.InProgress));
-            StopProcessesCommand = new Command(StopProcesses, () => Processes.Any(x => x.InProgress));
-            //todo
-            ViewReportCommand = new Command(ViewReport);
-            //ViewReportCommand = new Command(ViewReport,() => Processes.Any(x => !x.InProgress && x.MeasureSettings.Any(y=>y.MeasuredUnits.Any())));
+            StopProcessesCommand = new Command(StopProcesses, () => Processes.Any(x => x.InProgress));            
         }        
 
         private void RegisterProcesses(IList<ProcessConfiguration> conf)
@@ -115,7 +112,6 @@ namespace Ariane.ViewModels
 
         public Command StartProcessesCommand { get; set; }
         public Command StopProcessesCommand { get; set; }
-        public Command ViewReportCommand { get; set; }
 
         private void StartProcesses()
         {
@@ -125,16 +121,6 @@ namespace Ariane.ViewModels
         private void StopProcesses()
         {
             Processes.ForEach(x => x.Stop());
-        }
-
-        private void ViewReport()
-        {
-            throw new Exception("fix this");
-            // 
-            //var processes = Processes
-            //                .Where(x=>x.MeasureSettings.Any(y=> y.MeasuredUnits.Any() ))
-            //                .Select(x=>AutoMapper.Mapper.Map<Process>(x))
-            //                .ToList();            
         }
 
         public ProcessViewModel SelectedProcess { get; set; }
@@ -149,22 +135,15 @@ namespace Ariane.ViewModels
             {
                 InProgress = true;
 
-                await base.InitializeAsync();
-
-                // TODO: subscribe to events here
+                // Subscribe to events here
                 Processes.ForEach(x=>x.InitializeViewModelAsync());
                 SubscribeToEvents();
 
-                // todo load plugins
-                // load all assemblies from Plugins subdirectory
-                //_composer = new CompositionComposer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Plugins"));
-
-                //_mEFPluginRunner = new MEFPluginRunner(_composer);
-                //_mEFPluginRunner.Initiate("MainMenu_ViewReport", new List<Process>());
+                await base.InitializeAsync();
             }
             catch(Exception e)
             {
-                
+                Log.Error("Error while Main MVVM model getting initialized.",e);
             }
             finally
             {
@@ -177,7 +156,7 @@ namespace Ariane.ViewModels
             try
             {
                 InProgress = true;
-                // TODO: unsubscribe from events here
+                // Unsubscribe from events here
                 
                 Processes.ForEach(x=>x.CloseViewModelAsync(null));
 

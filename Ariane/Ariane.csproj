@@ -14,6 +14,9 @@
 
   <ItemGroup>
     <None Remove="launch2.ico" />
+    <None Remove="Resources\Images\gray.png" />
+    <None Remove="Resources\Images\green.png" />
+    <None Remove="Resources\Images\red.png" />
     <None Remove="Resources\Images\splash.png" />
   </ItemGroup>
 
@@ -37,6 +40,9 @@
 
   <ItemGroup>
     <Resource Include="launch2.ico" />
+    <Resource Include="Resources\Images\gray.png" />
+    <Resource Include="Resources\Images\green.png" />
+    <Resource Include="Resources\Images\red.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -38,8 +38,9 @@ namespace Ariane
             // Catel.Windows.Controls.UserControl.DefaultCreateWarningAndErrorValidatorForViewModelValue = false;
             // Catel.Windows.Controls.UserControl.DefaultSkipSearchingForInfoBarMessageControlValue = true;
 
-            // TODO: Register custom types in the ServiceLocator
+            // Register custom types in the ServiceLocator
             //Log.Info("Registering custom types");
+
             var serviceLocator = ServiceLocator.Default;
             serviceLocator.RegisterType<IConfigurationProvider>((x) => CreatMappingTypes(), RegistrationType.Singleton);
             
@@ -47,18 +48,11 @@ namespace Ariane
             // To auto-forward styles, check out Orchestra (see https://github.com/wildgums/orchestra)
             // StyleHelper.CreateStyleForwardersForDefaultStyles();
 
-            Log.Info("Creating mapping tables.");
-
-            var mapping = CreatMappingTypes();
-
-            Log.Info("Calling base.OnStartup");
-
             base.OnStartup(e);
         }
 
         private MapperConfiguration CreatMappingTypes()
         {
-
             return new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<MeasuredUnitViewModel, MeasuredUnit>();

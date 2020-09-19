@@ -41,17 +41,12 @@
             <MenuItem Header="Help">
                 <MenuItem Header="About" Click="NavigateToGitHub"  />
             </MenuItem>
-            <!--todo menu for reports-->
-            <!--<MenuItem Header="Reports">
-                <MenuItem Header="Open" Command="{Binding Path=ViewReportCommand}" />
-            </MenuItem>-->
         </Menu>        
         <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="200*" />
                 <RowDefinition Height="Auto" />
-                <!--<RowDefinition Height="200*" />-->
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
                 <Grid.ColumnDefinitions>
@@ -109,8 +104,7 @@
                                     <Button Grid.Column="1" Command="{Binding Path=StartStopCommand}" Content="{Binding Path=StartStopContentButton}"></Button>                                    
                                 </Grid>
                             </Grid>
-                            <ProgressBar Grid.Row="1" Height="4" Visibility="{Binding Path=InProgress, Converter={StaticResource BoolToVisibilityConverter}}"  IsIndeterminate="True"/>
-                            <!--<dxe:ProgressBarMarqueeHorizontalAnimationControl Grid.Row="1" Visibility="{Binding Path=InProgress, Converter={StaticResource BoolToVisibilityConverter}}" />-->
+                            <ProgressBar Grid.Row="1" Height="4" Visibility="{Binding Path=InProgress, Converter={StaticResource BoolToVisibilityConverter}}"  IsIndeterminate="True"/>                            
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -120,11 +114,13 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <WrapPanel Grid.Column="1">
                         <Button Name="btnBottomMenuHide" Height="30" Click="btnBottomMenuHide_Click" Content="Hide logs" Visibility="Hidden"/>
-                        <Button Name="btnBottomMenuShow" Height="30" Click="btnBottomMenuShow_Click" Content="Show logs"/>
-                    </WrapPanel>                    
+                        <Button Name="btnBottomMenuShow" Height="30" Click="btnBottomMenuShow_Click" Content="Show logs"/>                        
+                    </WrapPanel>
+                    <Label Grid.Column="2" Content="{Binding Path=SelectedProcess.DisplayName}" ContentStringFormat="Logs of process: {0}" />
                 </Grid>
                 <Grid>
                     <Grid.RowDefinitions>

@@ -239,7 +239,7 @@ namespace Ariane.ViewModels
 
         public bool IsCountingNotVisitedOutputLinesOn { get; set; } = true;
 
-        public string CountOfNotVisitedOutputLines { get; set; }
+        public string CountOfNotVisitedOutputLines { get; set; } = "";
 
         public ObservableCollection<OutputText> ConsoleOutputStream { get; set; } = new ObservableCollection<OutputText>();
         
@@ -280,7 +280,7 @@ namespace Ariane.ViewModels
 
                             ConsoleProcess.OutputDataReceived += (sender, args) =>
                             {
-                                if (args.Data != null)
+                                if (!_isAppClosing && args.Data != null)
                                     App.Current.Dispatcher.Invoke((System.Action)delegate
                                     {
                                         var rowData = args.Data.Trim();
@@ -312,10 +312,9 @@ namespace Ariane.ViewModels
                 case LoggingTypeSourceEnum.RabbitMQ:
 
                     var con = ConfigurationManager.AppSettings.Get(Constants.RabbitMQConnectionName);
-                    
-                    // todo fix this
-                    //if (con == null)
-                    //    con = Properties.Settings.Default.RabbitMQConnection;
+
+                    if (con == null)
+                        con = @"host=localhost;port=5672;virtualHost=/;username=admin;password=admin;requestedHeartbeat=0";
 
                     var processMQId = $"{FileName}_{Guid.NewGuid()}";
                     bus = RabbitHutch.CreateBus(con);
@@ -361,6 +360,7 @@ namespace Ariane.ViewModels
 
         private int _messageCounter= 0;
         private int _maxMessages = 100;
+        private bool _isAppClosing = false;
 
         private void PublishMessageToConsole(string rowData)
         {
@@ -496,8 +496,6 @@ namespace Ariane.ViewModels
                     bus?.Dispose();
 
                     break;
-                //default:
-                    //throw new Exception("Not implemented.");
             }
 
             // delete not finished measurements
@@ -525,14 +523,16 @@ namespace Ariane.ViewModels
             return base.InitializeAsync();
         }
 
-        protected override Task CloseAsync()
+        protected override Task OnClosingAsync()
         {
+            _isAppClosing = true;
+
             Stop();
 
             startWatch?.Stop();
             stopWatch?.Stop();
 
-            return base.CloseAsync();
+            return base.OnClosingAsync();
         }
     }    
 }
