@@ -145,7 +145,7 @@ Where possible, pull requests should include unit tests that cover as many uses 
 
 Code conventions are based on ReSharper - if you don't have it, follow ones at VS.
 
-Tell me how you like it by giving me a feedback on [your feedback](https://www.martinstanik.com "My personal home page"). Enjoy the application!
+Tell me how you like it by giving me a feedback on [my Web site](https://www.martinstanik.com "My personal Web page"). Enjoy the application!
 
 ## Authors
 
